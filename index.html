@@ -7,76 +7,30 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 *{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --green:#3F8F60;--green-d:#2d6a47;--green-l:#edf7f1;
-  --yellow:#F3E734;--black:#1a1a1a;--white:#fff;
-  --bg:#f4f4f4;--border:#e0e0e0;--muted:#888;
-}
+:root{--green:#3F8F60;--green-d:#2d6a47;--green-l:#edf7f1;--yellow:#F3E734;--black:#1a1a1a;--white:#fff;--bg:#f4f4f4;--border:#e0e0e0;--muted:#888}
 body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--black);min-height:100vh}
-
-/* ── LAYOUT ── */
 .app{display:grid;grid-template-columns:400px 1fr;min-height:100vh}
-
-/* ── SIDEBAR ── */
-.sidebar{
-  background:var(--white);border-right:1px solid var(--border);
-  display:flex;flex-direction:column;
-  position:sticky;top:0;height:100vh;overflow-y:auto;
-}
-.sidebar-header{
-  background:var(--black);padding:20px 24px 18px;
-  border-bottom:2px solid var(--yellow);flex-shrink:0;
-}
+.sidebar{background:var(--white);border-right:1px solid var(--border);display:flex;flex-direction:column;position:sticky;top:0;height:100vh;overflow-y:auto}
+.sidebar-header{background:var(--black);padding:20px 24px 18px;border-bottom:2px solid var(--yellow);flex-shrink:0}
 .sidebar-header h1{font-size:18px;font-weight:700;color:var(--white);letter-spacing:-.3px}
 .sidebar-header p{font-size:10px;color:rgba(255,255,255,.35);margin-top:3px;letter-spacing:.5px;text-transform:uppercase}
-
-/* ── STEPPER ── */
 .stepper{display:flex;border-bottom:1px solid var(--border);flex-shrink:0}
-.stab{
-  flex:1;padding:10px 0;font-size:9px;font-weight:700;
-  letter-spacing:.8px;text-transform:uppercase;color:var(--muted);
-  text-align:center;cursor:pointer;
-  border-bottom:2px solid transparent;transition:all .15s;
-}
+.stab{flex:1;padding:10px 0;font-size:9px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--muted);text-align:center;cursor:pointer;border-bottom:2px solid transparent;transition:all .15s}
 .stab.active{color:var(--black);border-bottom-color:var(--green)}
 .stab.done{color:var(--green)}
-.stab-n{
-  display:inline-flex;align-items:center;justify-content:center;
-  width:16px;height:16px;border-radius:50%;
-  background:var(--border);color:var(--muted);
-  font-size:9px;margin-right:4px;
-}
+.stab-n{display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;border-radius:50%;background:var(--border);color:var(--muted);font-size:9px;margin-right:4px}
 .stab.active .stab-n{background:var(--green);color:var(--white)}
 .stab.done .stab-n{background:var(--black);color:var(--white)}
-
-/* ── PANELS ── */
 .panel{display:none;flex:1;overflow-y:auto}
 .panel.active{display:block}
-
-/* ── SECTION ── */
 .sec{padding:16px 24px;border-bottom:1px solid var(--border)}
 .sec-gap{height:8px;background:var(--bg)}
 .lbl{font-size:9px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);margin-bottom:8px;display:block}
 .sublbl{font-size:11px;color:var(--muted);margin-top:-5px;margin-bottom:10px;display:block}
-
-/* ── FORM ELEMENTS ── */
-textarea,input[type=text]{
-  width:100%;padding:10px 12px;
-  border:1px solid var(--border);border-radius:4px;
-  font-size:13px;font-family:inherit;color:var(--black);
-  background:var(--bg);outline:none;line-height:1.6;
-  transition:border-color .15s;resize:none;
-}
+textarea,input[type=text]{width:100%;padding:10px 12px;border:1px solid var(--border);border-radius:4px;font-size:13px;font-family:inherit;color:var(--black);background:var(--bg);outline:none;line-height:1.6;transition:border-color .15s;resize:none}
 textarea:focus,input[type=text]:focus{border-color:var(--green);background:var(--white)}
 textarea::placeholder,input::placeholder{color:#bbb}
-
-/* ── BUTTONS ── */
-.btn{
-  display:flex;align-items:center;justify-content:center;gap:7px;
-  width:100%;padding:11px 16px;border:none;border-radius:4px;
-  font-size:12px;font-weight:600;font-family:inherit;
-  cursor:pointer;transition:all .15s;letter-spacing:.3px;
-}
+.btn{display:flex;align-items:center;justify-content:center;gap:7px;width:100%;padding:11px 16px;border:none;border-radius:4px;font-size:12px;font-weight:600;font-family:inherit;cursor:pointer;transition:all .15s;letter-spacing:.3px}
 .btn-dark{background:var(--black);color:var(--white)}
 .btn-dark:hover{background:#333}
 .btn-dark:disabled{background:#ccc;cursor:not-allowed}
@@ -85,141 +39,68 @@ textarea::placeholder,input::placeholder{color:#bbb}
 .btn-green:disabled{background:#ccc;cursor:not-allowed}
 .btn-outline{background:transparent;color:var(--black);border:1px solid var(--border);width:auto;padding:10px 14px}
 .btn-outline:hover{border-color:var(--black)}
-.btn-dl{
-  background:var(--yellow);color:var(--black);
-  font-size:14px;padding:14px;
-  box-shadow:0 2px 12px rgba(243,231,52,.4);
-}
-.btn-dl:hover{background:#e8d800}
-.nav{display:flex;gap:8px}
-.nav .btn-dark,.nav .btn-green{flex:1}
-
-/* ── LOADER ── */
 .loader{display:none;align-items:center;gap:8px;padding:10px 12px;background:var(--bg);border:1px solid var(--border);border-radius:4px;font-size:11px;color:var(--muted)}
 .loader.on{display:flex}
 .spin{width:14px;height:14px;flex-shrink:0;border:1.5px solid var(--border);border-top-color:var(--green);border-radius:50%;animation:spin .7s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
-
-/* ── AI RESULT ── */
 .ai-res{display:none;border:1px solid var(--border);border-left:3px solid var(--green);border-radius:0 4px 4px 0;padding:12px 14px;background:var(--white)}
 .ai-res.on{display:block}
 .ai-res-tag{font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--green);margin-bottom:5px}
 .ai-res-val{font-size:22px;font-weight:700;color:var(--black);letter-spacing:-1px;line-height:1}
 .ai-res-edit{font-size:11px;color:var(--muted);cursor:pointer;margin-top:7px;text-decoration:underline;display:inline-block}
-.ai-res-edit:hover{color:var(--black)}
 .manual{display:none;margin-top:8px}
 .manual.on{display:block}
-
-/* ── CHIPS ── */
 .chips{display:flex;flex-wrap:wrap;gap:6px}
 .chip{padding:5px 12px;border-radius:2px;border:1px solid var(--border);font-size:11px;font-weight:500;cursor:pointer;background:var(--white);color:var(--muted);transition:all .12s;font-family:inherit}
 .chip:hover{border-color:var(--black);color:var(--black)}
 .chip.on-g{background:var(--green);border-color:var(--green);color:var(--white)}
 .chip.on-d{background:var(--black);border-color:var(--black);color:var(--white)}
-
-/* ── SEARCH ── */
 .search-row{display:flex;gap:8px;align-items:center;margin-bottom:10px}
 .search-wrap{position:relative;flex:1}
 .search-wrap input{padding-left:32px}
 .search-ico{position:absolute;left:10px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:14px;pointer-events:none}
 .icon-count{font-size:10px;color:var(--muted);white-space:nowrap}
-
-/* ── ICON GRID ── */
 .icon-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
 .icard{border:1px solid var(--border);border-radius:4px;padding:8px 4px 7px;cursor:pointer;text-align:center;background:var(--white);transition:all .12s;position:relative}
 .icard:hover:not(.iused){border-color:var(--green);background:#f8fff9}
 .icard.isel{border:2px solid var(--green);background:var(--green-l)}
 .icard.iused{opacity:.35;cursor:not-allowed;filter:grayscale(1)}
 .icard.iai{border:2px solid var(--yellow)}
-.icard.isel.iai{border-color:var(--green)}
 .icard img{width:36px;height:36px;object-fit:contain;display:block;margin:0 auto 5px}
 .icard-n{font-size:9px;color:var(--muted);font-weight:500}
 .used-lbl{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.5);color:#fff;font-size:7px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:2px;text-align:center;border-radius:0 0 3px 3px}
 .ai-lbl{position:absolute;top:2px;right:2px;background:var(--yellow);color:var(--black);font-size:6px;font-weight:800;padding:1px 3px;border-radius:2px}
 .no-res{display:none;text-align:center;padding:20px 0;color:var(--muted);font-size:12px}
 .no-res.on{display:block}
-
-/* ── SUMMARY ── */
 .sum-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border);font-size:12px}
 .sum-row:last-child{border-bottom:none}
 .sum-k{color:var(--muted);font-weight:500}
 .sum-v{font-weight:600}
-
-/* ── STATUS ── */
 .status{display:none;padding:10px 12px;border-radius:4px;font-size:12px;line-height:1.5;margin-top:10px}
 .status.ok{display:block;background:#edfaed;color:#1a6b1a;border-left:3px solid var(--green)}
 .status.err{display:block;background:#fff5f5;color:#b91c1c;border-left:3px solid #e53e3e}
 .status.ld{display:block;background:#f0f4ff;color:#3455db;border-left:3px solid #3455db}
-
-/* ── MAIN (right panel) ── */
-.main{
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  padding:40px;
-}
+.main{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px}
 .main-empty{text-align:center;color:var(--muted)}
 .main-empty h2{font-size:18px;font-weight:600;color:var(--black);margin-bottom:8px}
-.main-empty p{font-size:13px;line-height:1.6}
-
-/* ── PREVIEW CARD ── */
 .preview-wrap{width:100%;max-width:600px}
 .preview-label{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
-.vignette-preview{
-  width:100%;aspect-ratio:400/225;
-  background:var(--green);border-radius:6px;
-  position:relative;overflow:hidden;
-  box-shadow:0 8px 32px rgba(0,0,0,.12);
-}
-.vignette-preview::before{
-  content:'';position:absolute;
-  top:-90px;right:-78px;
-  width:269px;height:402px;
-  background:rgba(0,0,0,.12);
-  transform:rotate(0deg);
-}
-.vignette-preview::after{
-  content:'';position:absolute;top:0;right:0;
-  width:calc(47/400*100%);height:calc(47/225*100%);
-  background:var(--black);
-  border-bottom-left-radius:50%;
-}
-.prev-title{
-  position:absolute;right:5%;bottom:30%;
-  font-size:clamp(16px,4vw,32px);font-weight:700;
-  color:var(--black);letter-spacing:-1px;line-height:1;
-  text-align:right;
-}
-.prev-cat{
-  position:absolute;right:5%;bottom:22%;
-  font-size:clamp(7px,1.2vw,11px);color:rgba(0,0,0,.5);
-  text-transform:uppercase;letter-spacing:1px;text-align:right;
-}
-.prev-fourn{
-  position:absolute;right:3%;bottom:3%;
-  font-size:clamp(7px,1.2vw,10px);color:rgba(0,0,0,.4);font-weight:600;
-}
-.prev-icon-name{
-  position:absolute;left:5%;bottom:3%;
-  font-size:clamp(7px,1.2vw,10px);color:rgba(0,0,0,.3);
-}
-.prev-img{
-  position:absolute;left:0;top:0;
-  width:37%;height:100%;
-  display:flex;align-items:center;justify-content:center;
-  padding:10px;
-}
+.vignette-preview{width:100%;aspect-ratio:400/225;background:var(--green);border-radius:6px;position:relative;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.12)}
+.vignette-preview::before{content:'';position:absolute;top:-90px;right:-78px;width:269px;height:402px;background:rgba(0,0,0,.12)}
+.vignette-preview::after{content:'';position:absolute;top:0;right:0;width:calc(47/400*100%);height:calc(47/225*100%);background:var(--black);border-bottom-left-radius:50%}
+.prev-title{position:absolute;right:5%;bottom:30%;font-size:clamp(16px,4vw,32px);font-weight:700;color:var(--black);letter-spacing:-1px;line-height:1;text-align:right}
+.prev-cat{position:absolute;right:5%;bottom:22%;font-size:clamp(7px,1.2vw,11px);color:rgba(0,0,0,.5);text-transform:uppercase;letter-spacing:1px;text-align:right}
+.prev-fourn{position:absolute;right:3%;bottom:3%;font-size:clamp(7px,1.2vw,10px);color:rgba(0,0,0,.4);font-weight:600}
+.prev-img{position:absolute;left:0;top:0;width:37%;height:100%;display:flex;align-items:center;justify-content:center;padding:10px}
 .prev-img img{max-width:100%;max-height:100%;object-fit:contain}
-
-/* ── PNG RESULT ── */
+.prev-accueil{position:absolute;top:0;right:0;width:calc(47/400*100%);height:calc(47/225*100%);display:flex;align-items:center;justify-content:center;z-index:2}
+.prev-accueil img{max-width:60%;max-height:60%;object-fit:contain;filter:brightness(10)}
 .png-result{margin-top:20px}
-.png-result img{
-  width:100%;border-radius:6px;
-  box-shadow:0 8px 32px rgba(0,0,0,.12);
-}
+.png-result img{width:100%;border-radius:6px;box-shadow:0 8px 32px rgba(0,0,0,.12)}
 .dl-row{display:flex;gap:10px;margin-top:14px}
-.dl-row .btn-dl{flex:1}
+.dl-row .btn-dl{flex:1;background:var(--yellow);color:var(--black);font-size:14px;padding:14px;box-shadow:0 2px 12px rgba(243,231,52,.4)}
+.dl-row .btn-dl:hover{background:#e8d800}
 .dl-row .btn-outline{flex:0}
-
-/* ── HISTORY ── */
 .hist-wrap{width:100%;max-width:600px;margin-top:32px}
 .hist-title{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
 .hist-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px}
@@ -227,188 +108,165 @@ textarea::placeholder,input::placeholder{color:#bbb}
 .hist-card:hover{border-color:var(--green);box-shadow:0 2px 12px rgba(0,0,0,.08)}
 .hist-card img{width:100%;aspect-ratio:400/225;object-fit:cover;display:block}
 .hist-card-name{font-size:10px;font-weight:600;padding:6px 8px;border-top:1px solid var(--border)}
+.nav{display:flex;gap:8px}
+.nav .btn-dark,.nav .btn-green{flex:1}
 </style>
 </head>
 <body>
-
 <div class="app">
-
-  <!-- ── SIDEBAR ── -->
-  <div class="sidebar">
-    <div class="sidebar-header">
-      <h1>Vignette Studio</h1>
-      <p>Catalogue de formation · B! Upskill</p>
+<div class="sidebar">
+  <div class="sidebar-header">
+    <h1>Vignette Studio</h1>
+    <p>Catalogue de formation · B! Upskill</p>
+  </div>
+  <div class="stepper">
+    <div class="stab active" id="tab1" onclick="goTo(1)"><span class="stab-n">1</span>Contenu</div>
+    <div class="stab" id="tab2" onclick="goTo(2)"><span class="stab-n">2</span>Visuel</div>
+    <div class="stab" id="tab3" onclick="goTo(3)"><span class="stab-n">3</span>Générer</div>
+  </div>
+  <div class="panel active" id="p1">
+    <div class="sec">
+      <span class="lbl">Description de la formation</span>
+      <span class="sublbl">L'IA génère le titre et suggère l'icône</span>
+      <textarea id="desc" rows="4" placeholder="Ex: Formation aux méthodes agiles Scrum et Kanban…"></textarea>
+      <div style="height:10px"></div>
+      <button class="btn btn-dark" id="btn-gen-title">Générer le titre</button>
     </div>
-
-    <div class="stepper">
-      <div class="stab active" id="tab1" onclick="goTo(1)"><span class="stab-n">1</span>Contenu</div>
-      <div class="stab" id="tab2" onclick="goTo(2)"><span class="stab-n">2</span>Visuel</div>
-      <div class="stab" id="tab3" onclick="goTo(3)"><span class="stab-n">3</span>Générer</div>
-    </div>
-
-    <!-- PANEL 1 -->
-    <div class="panel active" id="p1">
+    <div class="loader" id="load-title" style="margin:0;border-radius:0;border-left:none;border-right:none"><div class="spin"></div>Génération du titre…</div>
+    <div id="ai-section" style="display:none">
       <div class="sec">
-        <span class="lbl">Description de la formation</span>
-        <span class="sublbl">L'IA génère le titre et suggère l'icône</span>
-        <textarea id="desc" rows="4" placeholder="Ex: Formation aux méthodes agiles Scrum et Kanban…"></textarea>
-        <div style="height:10px"></div>
-        <button class="btn btn-dark" id="btn-gen-title">Générer le titre</button>
-      </div>
-
-      <div class="loader" id="load-title" style="margin:0;border-radius:0;border-left:none;border-right:none"><div class="spin"></div>Génération du titre…</div>
-
-      <div id="ai-section" style="display:none">
-        <div class="sec">
-          <div class="ai-res on" id="ai-res">
-            <div class="ai-res-tag">Titre généré</div>
-            <div class="ai-res-val" id="ai-title">—</div>
-            <div class="ai-res-edit" id="edit-btn">Modifier</div>
-          </div>
-          <div class="manual" id="manual">
-            <input type="text" id="manual-in" placeholder="Titre personnalisé…"/>
-          </div>
+        <div class="ai-res on" id="ai-res">
+          <div class="ai-res-tag">Titre généré</div>
+          <div class="ai-res-val" id="ai-title">—</div>
+          <div class="ai-res-edit" id="edit-btn">Modifier</div>
         </div>
-      </div>
-
-      <div class="sec-gap"></div>
-
-      <div class="sec">
-        <span class="lbl">Sous-catégorie</span>
-        <div class="chips" id="ch-cat">
-          <button class="chip on-g" data-v="Methodologie">Methodologie</button>
-          <button class="chip" data-v="Sustainability">Sustainability</button>
-          <button class="chip" data-v="IA&amp;Data">IA&amp;Data</button>
-        </div>
-      </div>
-
-      <div class="sec-gap"></div>
-      <div class="sec"><button class="btn btn-dark" id="btn-next1">Suivant →</button></div>
-    </div>
-
-    <!-- PANEL 2 -->
-    <div class="panel" id="p2">
-      <div class="sec">
-        <span class="lbl">Icône</span>
-        <div class="search-row">
-          <div class="search-wrap">
-            <span class="search-ico">⌕</span>
-            <input type="text" id="search-icon" placeholder="Rechercher…" style="padding-left:32px"/>
-          </div>
-          <span class="icon-count" id="icon-count"></span>
-        </div>
-        <div class="loader on" id="load-icons"><div class="spin"></div>Chargement des icônes…</div>
-        <div class="icon-grid" id="icon-grid" style="display:none"></div>
-        <div class="no-res" id="no-res">Aucune icône pour "<span id="search-term"></span>"</div>
-        <div class="loader" id="load-icon-ai" style="margin-top:8px"><div class="spin"></div>Sélection IA…</div>
-      </div>
-
-      <div class="sec-gap"></div>
-
-      <div class="sec">
-        <span class="lbl">Fournisseur</span>
-        <div class="chips" id="ch-fourn">
-          <button class="chip on-d" data-v="B! UPSKILL" data-id="1:30">B! UPSKILL</button>
-        </div>
-      </div>
-
-      <div class="sec-gap"></div>
-
-      <div class="sec">
-        <span class="lbl">Structure d'accueil</span>
-        <div class="chips" id="ch-acc">
-          <button class="chip on-d" data-v="Logo Bivwak" data-id="1:670">BiVWAK!</button>
-        </div>
-      </div>
-
-      <div class="sec-gap"></div>
-      <div class="sec">
-        <div class="nav">
-          <button class="btn btn-outline" onclick="goTo(1)">← Retour</button>
-          <button class="btn btn-dark" id="btn-next2">Suivant →</button>
-        </div>
+        <div class="manual" id="manual"><input type="text" id="manual-in" placeholder="Titre personnalisé…"/></div>
       </div>
     </div>
-
-    <!-- PANEL 3 -->
-    <div class="panel" id="p3">
-      <div class="sec" id="summary"></div>
-      <div class="sec-gap"></div>
-      <div class="sec">
-        <button class="btn btn-green" id="btn-gen">Créer et exporter le PNG</button>
-        <div class="status" id="status"></div>
+    <div class="sec-gap"></div>
+    <div class="sec">
+      <span class="lbl">Sous-catégorie</span>
+      <div class="chips" id="ch-cat">
+        <button class="chip on-g" data-v="Methodologie">Methodologie</button>
+        <button class="chip" data-v="Sustainability">Sustainability</button>
+        <button class="chip" data-v="IA&amp;Data">IA&amp;Data</button>
       </div>
-      <div class="sec-gap"></div>
-      <div class="sec">
-        <button class="btn btn-outline" onclick="goTo(2)">← Modifier</button>
+    </div>
+    <div class="sec-gap"></div>
+    <div class="sec"><button class="btn btn-dark" id="btn-next1">Suivant →</button></div>
+  </div>
+  <div class="panel" id="p2">
+    <div class="sec">
+      <span class="lbl">Icône</span>
+      <div class="search-row">
+        <div class="search-wrap">
+          <span class="search-ico">⌕</span>
+          <input type="text" id="search-icon" placeholder="Rechercher…" style="padding-left:32px"/>
+        </div>
+        <span class="icon-count" id="icon-count"></span>
+      </div>
+      <div class="icon-grid" id="icon-grid"></div>
+      <div class="no-res" id="no-res">Aucune icône pour "<span id="search-term"></span>"</div>
+      <div class="loader" id="load-icon-ai" style="margin-top:8px"><div class="spin"></div>Sélection IA…</div>
+    </div>
+    <div class="sec-gap"></div>
+    <div class="sec">
+      <span class="lbl">Fournisseur</span>
+      <div class="chips" id="ch-fourn">
+        <button class="chip on-d" data-v="B_UPSKILL" data-file="B_UPSKILL.png">B! UPSKILL</button>
+      </div>
+    </div>
+    <div class="sec-gap"></div>
+    <div class="sec">
+      <span class="lbl">Structure d'accueil</span>
+      <div class="chips" id="ch-acc">
+        <button class="chip on-d" data-v="Bivwak" data-file="Bivwak.png">BiVWAK!</button>
+      </div>
+    </div>
+    <div class="sec-gap"></div>
+    <div class="sec">
+      <div class="nav">
+        <button class="btn btn-outline" onclick="goTo(1)">← Retour</button>
+        <button class="btn btn-dark" id="btn-next2">Suivant →</button>
       </div>
     </div>
   </div>
-
-  <!-- ── MAIN ── -->
-  <div class="main" id="main">
-    <div class="main-empty" id="main-empty">
-      <h2>Vignette Studio</h2>
-      <p>Décris une formation à gauche<br>et génère ta vignette en quelques secondes.</p>
+  <div class="panel" id="p3">
+    <div class="sec" id="summary"></div>
+    <div class="sec-gap"></div>
+    <div class="sec">
+      <button class="btn btn-green" id="btn-gen">Créer et exporter le PNG</button>
+      <div class="status" id="status"></div>
     </div>
-
-    <div class="preview-wrap" id="preview-wrap" style="display:none">
-      <div class="preview-label">Aperçu</div>
-      <div class="vignette-preview" id="vignette-preview">
-        <div class="prev-img" id="prev-img"></div>
-        <div class="prev-title" id="prev-title">—</div>
-        <div class="prev-cat" id="prev-cat">—</div>
-        <div class="prev-fourn" id="prev-fourn">—</div>
-        <div class="prev-icon-name" id="prev-icon-name">—</div>
-      </div>
-
-      <div class="png-result" id="png-result" style="display:none">
-        <div class="preview-label" style="margin-top:20px">PNG final (depuis Figma)</div>
-        <img id="png-img" src="" alt="Vignette générée"/>
-        <div class="dl-row">
-          <button class="btn btn-dl" id="btn-dl">↓ Télécharger le PNG</button>
-          <button class="btn btn-outline" onclick="resetForm()">Nouvelle vignette</button>
-        </div>
-      </div>
+    <div class="sec-gap"></div>
+    <div class="sec"><button class="btn btn-outline" onclick="goTo(2)">← Modifier</button></div>
+  </div>
+</div>
+<div class="main" id="main">
+  <div class="main-empty" id="main-empty">
+    <h2>Vignette Studio</h2>
+    <p>Décris une formation à gauche<br>et génère ta vignette en quelques secondes.</p>
+  </div>
+  <div class="preview-wrap" id="preview-wrap" style="display:none">
+    <div class="preview-label">Aperçu</div>
+    <div class="vignette-preview">
+      <div class="prev-img" id="prev-img"></div>
+      <div class="prev-accueil" id="prev-accueil"></div>
+      <div class="prev-title" id="prev-title">—</div>
+      <div class="prev-cat" id="prev-cat">—</div>
+      <div class="prev-fourn" id="prev-fourn">—</div>
     </div>
-
-    <div class="hist-wrap" id="hist-wrap" style="display:none">
-      <div class="hist-title">Vignettes créées</div>
-      <div class="hist-grid" id="hist-grid"></div>
+    <div class="png-result" id="png-result" style="display:none">
+      <div class="preview-label" style="margin-top:20px">PNG final</div>
+      <img id="png-img" src="" alt=""/>
+      <div class="dl-row">
+        <button class="btn btn-dl" id="btn-dl">↓ Télécharger le PNG</button>
+        <button class="btn btn-outline" onclick="resetForm()">Nouvelle vignette</button>
+      </div>
     </div>
   </div>
+  <div class="hist-wrap" id="hist-wrap" style="display:none">
+    <div class="hist-title">Vignettes créées</div>
+    <div class="hist-grid" id="hist-grid"></div>
+  </div>
+</div>
 </div>
 
 <script>
-const S={
-  desc:'',titre:'',categorie:'Methodologie',
-  iconeId:null,iconeName:null,iconeImageUrl:null,
-  fournisseurId:'1:30',fournisseurName:'B! UPSKILL',
-  accueilId:'1:670',accueilName:'Logo Bivwak',
-  icons:[],
+// Liste des icônes disponibles avec leurs fichiers
+const ICONS = [
+  { name: 'Magnet', file: 'Magnet.png' },
+  { name: 'Screen', file: 'Screen.png' },
+  { name: 'Cible', file: 'cible.png' },
+  { name: 'Clé à molette', file: 'cle_a_molette.png' },
+  { name: 'Trophy', file: 'trophy.png' },
+  { name: 'Table connection', file: 'table_connection.png' },
+  { name: 'Compass', file: 'compass.png' },
+  { name: 'Speakerphone', file: 'speakerphone.png' },
+  { name: 'Question mark', file: 'question mark.png' },
+  { name: 'A', file: 'A.png' },
+  { name: 'B', file: 'B.png' },
+];
+
+const S = {
+  desc:'', titre:'', categorie:'Methodologie',
+  iconeFile:null, iconeName:null,
+  fournisseurFile:'B_UPSKILL.png', fournisseurName:'B! UPSKILL',
+  accueilFile:'Bivwak.png', accueilName:'BiVWAK!',
 };
 
-// ── NAVIGATION ────────────────────────────────────────────────────────────────
 function goTo(n){
   [1,2,3].forEach(i=>{
-    document.getElementById(`p${i}`).classList.toggle('active',i===n);
-    const t=document.getElementById(`tab${i}`);
+    document.getElementById('p'+i).classList.toggle('active',i===n);
+    const t=document.getElementById('tab'+i);
     t.classList.remove('active','done');
     if(i===n) t.classList.add('active');
     else if(i<n) t.classList.add('done');
   });
+  if(n===2) buildGrid(ICONS);
   if(n===3) buildSummary();
 }
 
-// ── API CALLS ─────────────────────────────────────────────────────────────────
-async function api(action, body=null){
-  const opts={method:body?'POST':'GET',headers:{'Content-Type':'application/json'}};
-  if(body) opts.body=JSON.stringify(body);
-  const r=await fetch(`/api/generate?action=${action}`,opts);
-  return r.json();
-}
-
-// ── PANEL 1 ───────────────────────────────────────────────────────────────────
 document.getElementById('desc').oninput=e=>S.desc=e.target.value;
 
 document.getElementById('btn-gen-title').onclick=async()=>{
@@ -418,7 +276,8 @@ document.getElementById('btn-gen-title').onclick=async()=>{
   document.getElementById('load-title').classList.add('on');
   document.getElementById('ai-section').style.display='none';
   try{
-    const d=await api('title',{description:S.desc});
+    const r=await fetch('/api/generate?action=title',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({description:S.desc})});
+    const d=await r.json();
     S.titre=d.titre||'FORMATION';
   }catch{S.titre='FORMATION'}
   document.getElementById('ai-title').textContent=S.titre;
@@ -426,13 +285,13 @@ document.getElementById('btn-gen-title').onclick=async()=>{
   document.getElementById('load-title').classList.remove('on');
   btn.disabled=false;
   updatePreview();
+  suggestIcon();
 };
 
 document.getElementById('edit-btn').onclick=()=>{
   const m=document.getElementById('manual');
   m.classList.toggle('on');
   document.getElementById('manual-in').value=S.titre;
-  if(m.classList.contains('on')) document.getElementById('manual-in').focus();
 };
 document.getElementById('manual-in').oninput=e=>{
   S.titre=e.target.value.toUpperCase();
@@ -441,69 +300,56 @@ document.getElementById('manual-in').oninput=e=>{
 };
 
 chips('ch-cat','categorie',null,'on-g');
+
 document.getElementById('btn-next1').onclick=()=>{
   if(!S.titre){alert('Génère un titre.');return}
   goTo(2);
 };
 
-// ── PANEL 2 ───────────────────────────────────────────────────────────────────
-(async()=>{
-  try{
-    const d=await api('icons');
-    S.icons=d.icons||[];
-    document.getElementById('load-icons').classList.remove('on');
-    buildGrid(S.icons);
-    if(S.titre) suggestIcon();
-  }catch(e){
-    document.getElementById('load-icons').classList.remove('on');
-  }
-})();
-
-function buildGrid(icons,q=''){
+function buildGrid(icons, q=''){
   const g=document.getElementById('icon-grid');
   g.innerHTML='';
   const fq=q.toLowerCase().trim();
   const list=fq?icons.filter(i=>i.name.toLowerCase().includes(fq)):icons;
-  const avail=list.filter(i=>!i.used).length;
-  const used=list.filter(i=>i.used).length;
-  document.getElementById('icon-count').textContent=
-    list.length?`${avail} dispo${used?` · ${used} utilisée${used>1?'s':''}`:''}`:'' ;
+  document.getElementById('icon-count').textContent=list.length+' icône'+(list.length>1?'s':'');
   document.getElementById('no-res').classList.toggle('on',!list.length);
   document.getElementById('search-term').textContent=fq;
   list.forEach(ic=>{
     const c=document.createElement('div');
-    c.className='icard'+(ic.used?' iused':'')+(S.iconeId===ic.id?' isel':'');
-    c.dataset.id=ic.id;c.dataset.name=ic.name;
-    if(ic.used){const b=document.createElement('div');b.className='used-lbl';b.textContent='Utilisée';c.appendChild(b)}
-    if(ic.imageUrl){const im=document.createElement('img');im.src=ic.imageUrl;im.alt=ic.name;c.appendChild(im)}
-    else{const p=document.createElement('div');p.style.cssText='height:36px;display:flex;align-items:center;justify-content:center;font-size:18px';p.textContent='🖼️';c.appendChild(p)}
-    const n=document.createElement('div');n.className='icard-n';n.textContent=ic.name;c.appendChild(n);
-    if(!ic.used) c.onclick=()=>{
+    c.className='icard'+(S.iconeFile===ic.file?' isel':'');
+    c.dataset.file=ic.file;c.dataset.name=ic.name;
+    const img=document.createElement('img');
+    img.src='/assets/icons/'+ic.file;
+    img.alt=ic.name;
+    img.onerror=()=>{img.style.display='none'};
+    c.appendChild(img);
+    const n=document.createElement('div');
+    n.className='icard-n';n.textContent=ic.name;
+    c.appendChild(n);
+    c.onclick=()=>{
       document.querySelectorAll('.icard').forEach(x=>{x.classList.remove('isel','iai');const s=x.querySelector('.ai-lbl');if(s)s.remove()});
       c.classList.add('isel');
-      S.iconeId=ic.id;S.iconeName=ic.name;S.iconeImageUrl=ic.imageUrl;
+      S.iconeFile=ic.file;S.iconeName=ic.name;
       updatePreview();
     };
     g.appendChild(c);
   });
-  g.style.display=list.length?'grid':'none';
 }
 
-document.getElementById('search-icon').oninput=e=>buildGrid(S.icons,e.target.value);
+document.getElementById('search-icon').oninput=e=>buildGrid(ICONS,e.target.value);
 
 async function suggestIcon(){
-  const avail=S.icons.filter(i=>!i.used).map(i=>i.name);
-  if(!avail.length) return;
   document.getElementById('load-icon-ai').classList.add('on');
   try{
-    const d=await api('suggest-icon',{titre:S.titre,description:S.desc,availableIcons:avail});
-    const found=S.icons.find(i=>i.name.toLowerCase()===(d.suggested||'').toLowerCase()&&!i.used);
+    const names=ICONS.map(i=>i.name).join(', ');
+    const r=await fetch('/api/generate?action=suggest-icon',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({titre:S.titre,description:S.desc,availableIcons:ICONS.map(i=>i.name)})});
+    const d=await r.json();
+    const found=ICONS.find(i=>i.name.toLowerCase()===(d.suggested||'').toLowerCase());
     if(found){
-      S.iconeId=found.id;S.iconeName=found.name;S.iconeImageUrl=found.imageUrl;
-      document.getElementById('search-icon').value='';
-      buildGrid(S.icons,'');
+      S.iconeFile=found.file;S.iconeName=found.name;
+      buildGrid(ICONS,'');
       document.querySelectorAll('.icard').forEach(c=>{
-        if(c.dataset.id===found.id){
+        if(c.dataset.file===found.file){
           c.classList.add('isel','iai');
           const l=document.createElement('div');l.className='ai-lbl';l.textContent='IA';c.appendChild(l);
         }
@@ -514,98 +360,76 @@ async function suggestIcon(){
   document.getElementById('load-icon-ai').classList.remove('on');
 }
 
-chips('ch-fourn','fournisseurName','fournisseurId','on-d');
-chips('ch-acc','accueilName','accueilId','on-d');
+chips('ch-fourn','fournisseurName','fournisseurFile','on-d');
+chips('ch-acc','accueilName','accueilFile','on-d');
 
 document.getElementById('btn-next2').onclick=()=>{
-  if(!S.iconeId){alert('Choisis une icône.');return}
+  if(!S.iconeFile){alert('Choisis une icône.');return}
   goTo(3);
 };
 
-// ── PANEL 3 ───────────────────────────────────────────────────────────────────
 function buildSummary(){
   const rows=[['Titre',S.titre],['Catégorie',S.categorie],['Icône',S.iconeName],['Fournisseur',S.fournisseurName],['Accueil',S.accueilName]];
-  document.getElementById('summary').innerHTML=
-    '<span class="lbl">Récapitulatif</span>'+
-    rows.map(([k,v])=>`<div class="sum-row"><span class="sum-k">${k}</span><span class="sum-v">${v||'—'}</span></div>`).join('');
+  document.getElementById('summary').innerHTML='<span class="lbl">Récapitulatif</span>'+rows.map(([k,v])=>`<div class="sum-row"><span class="sum-k">${k}</span><span class="sum-v">${v||'—'}</span></div>`).join('');
 }
 
-document.getElementById('btn-gen').onclick=async()=>{
-  showStatus('ld','Création dans Figma et export PNG…');
-  document.getElementById('btn-gen').disabled=true;
-  try{
-    const d=await api('vignette',{
-      titre:S.titre,categorie:S.categorie,
-      iconeId:S.iconeId,iconeName:S.iconeName,
-      fournisseurId:S.fournisseurId,
-      accueilId:S.accueilId,
-    });
-    if(d.error) throw new Error(d.error);
-    showStatus('ok',`✅ Vignette "${d.titre}" créée dans Figma.`);
-    // Afficher le PNG
-    if(d.pngUrl){
-      document.getElementById('png-img').src=d.pngUrl;
-      document.getElementById('png-result').style.display='block';
-      document.getElementById('btn-dl').onclick=()=>downloadPng(d.pngUrl,d.titre);
-    }
-    addHist(d.titre,d.pngUrl);
-    S.icons=S.icons.map(i=>i.name===S.iconeName?{...i,used:true}:i);
-  }catch(e){
-    showStatus('err','Erreur : '+e.message);
-  }
-  document.getElementById('btn-gen').disabled=false;
-};
-
-function showStatus(t,txt){const e=document.getElementById('status');e.className='status '+t;e.textContent=txt}
-
-// ── PREVIEW (panneau droit) ───────────────────────────────────────────────────
 function updatePreview(){
   document.getElementById('main-empty').style.display='none';
   document.getElementById('preview-wrap').style.display='block';
   document.getElementById('prev-title').textContent=S.titre||'—';
   document.getElementById('prev-cat').textContent=(S.categorie||'').toUpperCase();
   document.getElementById('prev-fourn').textContent=S.fournisseurName||'';
-  document.getElementById('prev-icon-name').textContent=S.iconeName||'';
   const img=document.getElementById('prev-img');
-  if(S.iconeImageUrl){
-    img.innerHTML=`<img src="${S.iconeImageUrl}" alt="${S.iconeName}"/>`;
-  } else {
-    img.innerHTML='';
-  }
+  if(S.iconeFile) img.innerHTML=`<img src="/assets/icons/${S.iconeFile}" alt="${S.iconeName}"/>`;
+  const acc=document.getElementById('prev-accueil');
+  if(S.accueilFile) acc.innerHTML=`<img src="/assets/accueil/${S.accueilFile}" alt="${S.accueilName}"/>`;
 }
 
-// ── DOWNLOAD ─────────────────────────────────────────────────────────────────
-async function downloadPng(url,titre){
-  const r=await fetch(url);
-  const blob=await r.blob();
-  const a=document.createElement('a');
-  a.href=URL.createObjectURL(blob);
-  a.download=`vignette-${titre.toLowerCase().replace(/\s+/g,'-')}.png`;
-  a.click();
-}
+document.getElementById('btn-gen').onclick=async()=>{
+  showStatus('ld','Génération du PNG en cours…');
+  document.getElementById('btn-gen').disabled=true;
+  try{
+    const r=await fetch('/api/generate?action=png',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({
+      titre:S.titre,categorie:S.categorie,
+      iconeFile:S.iconeFile,iconeName:S.iconeName,
+      fournisseurFile:S.fournisseurFile,fournisseurName:S.fournisseurName,
+      accueilFile:S.accueilFile,accueilName:S.accueilName,
+    })});
+    const d=await r.json();
+    if(d.error) throw new Error(d.error);
+    showStatus('ok','✅ Vignette "'+d.titre+'" prête !');
+    if(d.pngBase64){
+      const src='data:image/png;base64,'+d.pngBase64;
+      document.getElementById('png-img').src=src;
+      document.getElementById('png-result').style.display='block';
+      document.getElementById('btn-dl').onclick=()=>{
+        const a=document.createElement('a');a.href=src;
+        a.download='vignette-'+S.titre.toLowerCase().replace(/\s+/g,'-')+'.png';
+        a.click();
+      };
+    }
+    addHist(S.titre, d.pngBase64?'data:image/png;base64,'+d.pngBase64:null);
+  }catch(e){showStatus('err','Erreur : '+e.message)}
+  document.getElementById('btn-gen').disabled=false;
+};
 
-// ── HISTORY ──────────────────────────────────────────────────────────────────
-function addHist(titre,pngUrl){
+function showStatus(t,txt){const e=document.getElementById('status');e.className='status '+t;e.textContent=txt}
+
+function addHist(titre,src){
   document.getElementById('hist-wrap').style.display='block';
-  const card=document.createElement('div');
-  card.className='hist-card';
-  card.innerHTML=`${pngUrl?`<img src="${pngUrl}" alt="${titre}"/>`:''}
-    <div class="hist-card-name">${titre}</div>`;
-  if(pngUrl) card.onclick=()=>downloadPng(pngUrl,titre);
+  const card=document.createElement('div');card.className='hist-card';
+  card.innerHTML=(src?`<img src="${src}" alt="${titre}"/>`:'')+'<div class="hist-card-name">'+titre+'</div>';
   document.getElementById('hist-grid').prepend(card);
 }
 
-function resetForm(){
-  document.getElementById('png-result').style.display='none';
-  goTo(1);
-}
+function resetForm(){document.getElementById('png-result').style.display='none';goTo(1)}
 
-// ── UTILS ─────────────────────────────────────────────────────────────────────
 function chips(id,sk,sik,cls){
   document.getElementById(id).addEventListener('click',e=>{
     const c=e.target.closest('.chip');if(!c) return;
-    document.querySelectorAll(`#${id} .chip`).forEach(x=>x.classList.remove(cls));
-    c.classList.add(cls);S[sk]=c.dataset.v;if(sik)S[sik]=c.dataset.id;
+    document.querySelectorAll('#'+id+' .chip').forEach(x=>x.classList.remove(cls));
+    c.classList.add(cls);S[sk]=c.dataset.v;
+    if(sik) S[sik]=c.dataset.file;
     updatePreview();
   });
 }
