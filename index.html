@@ -319,7 +319,7 @@ function buildGrid(icons, q=''){
     c.className='icard'+(S.iconeFile===ic.file?' isel':'');
     c.dataset.file=ic.file;c.dataset.name=ic.name;
     const img=document.createElement('img');
-    img.src='/assets/icons/'+ic.file;
+    img.src='/icons/'+ic.file;
     img.alt=ic.name;
     img.onerror=()=>{img.style.display='none'};
     c.appendChild(img);
@@ -380,9 +380,9 @@ function updatePreview(){
   document.getElementById('prev-cat').textContent=(S.categorie||'').toUpperCase();
   document.getElementById('prev-fourn').textContent=S.fournisseurName||'';
   const img=document.getElementById('prev-img');
-  if(S.iconeFile) img.innerHTML=`<img src="/assets/icons/${S.iconeFile}" alt="${S.iconeName}"/>`;
+  if(S.iconeFile) img.innerHTML=`<img src="/icons/${S.iconeFile}" alt="${S.iconeName}"/>`;
   const acc=document.getElementById('prev-accueil');
-  if(S.accueilFile) acc.innerHTML=`<img src="/assets/accueil/${S.accueilFile}" alt="${S.accueilName}"/>`;
+  if(S.accueilFile) acc.innerHTML=`<img src="/accueil/${S.accueilFile}" alt="${S.accueilName}"/>`;
 }
 
 document.getElementById('btn-gen').onclick=async()=>{
