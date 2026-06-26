@@ -378,7 +378,7 @@ function updatePreview(){
   document.getElementById('preview-wrap').style.display='block';
   document.getElementById('prev-title').textContent=S.titre||'—';
   document.getElementById('prev-cat').textContent=(S.categorie||'').toUpperCase();
-  document.getElementById('prev-fourn').textContent=S.fournisseurName||'';
+  document.getElementById('prev-fourn').innerHTML=S.fournisseurFile?'<img src="/fournisseur/'+S.fournisseurFile+'" style="height:14px;object-fit:contain;"/>':'';
   const img=document.getElementById('prev-img');
   if(S.iconeFile) img.innerHTML=`<img src="/icons/${S.iconeFile}" alt="${S.iconeName}"/>`;
   const acc=document.getElementById('prev-accueil');
