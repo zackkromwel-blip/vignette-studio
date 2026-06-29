@@ -114,6 +114,7 @@ textarea::placeholder,input::placeholder{color:#bbb}
 .nav{display:flex;gap:8px}
 .nav .btn-dark,.nav .btn-green{flex:1}
 </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
 <body>
 <div class="app">
@@ -394,26 +395,18 @@ document.getElementById('btn-gen').onclick=async()=>{
   showStatus('ld','Génération du PNG en cours…');
   document.getElementById('btn-gen').disabled=true;
   try{
-    const r=await fetch('/api/generate?action=png',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({
-      titre:S.titre,categorie:S.categorie,
-      iconeFile:S.iconeFile,iconeName:S.iconeName,
-      fournisseurFile:S.fournisseurFile,fournisseurName:S.fournisseurName,
-      accueilFile:S.accueilFile,accueilName:S.accueilName,
-    })});
-    const d=await r.json();
-    if(d.error) throw new Error(d.error);
-    showStatus('ok','✅ Vignette "'+d.titre+'" prête !');
-    if(d.pngBase64){
-      const src='data:image/png;base64,'+d.pngBase64;
-      document.getElementById('png-img').src=src;
-      document.getElementById('png-result').style.display='block';
-      document.getElementById('btn-dl').onclick=()=>{
-        const a=document.createElement('a');a.href=src;
-        a.download='vignette-'+S.titre.toLowerCase().replace(/\s+/g,'-')+'.png';
-        a.click();
-      };
-    }
-    addHist(S.titre, d.pngBase64?'data:image/png;base64,'+d.pngBase64:null);
+    const el=document.querySelector('.vignette-preview');
+    const canvas=await html2canvas(el,{scale:2,useCORS:true,allowTaint:true,width:el.offsetWidth,height:el.offsetHeight});
+    const src=canvas.toDataURL('image/png');
+    document.getElementById('png-img').src=src;
+    document.getElementById('png-result').style.display='block';
+    document.getElementById('btn-dl').onclick=()=>{
+      const a=document.createElement('a');a.href=src;
+      a.download='vignette-'+S.titre.toLowerCase().replace(/\s+/g,'-')+'.png';
+      a.click();
+    };
+    addHist(S.titre,src);
+    showStatus('ok','✅ Vignette "'+S.titre+'" prête !');
   }catch(e){showStatus('err','Erreur : '+e.message)}
   document.getElementById('btn-gen').disabled=false;
 };
