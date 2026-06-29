@@ -396,7 +396,11 @@ document.getElementById('btn-gen').onclick=async()=>{
   document.getElementById('btn-gen').disabled=true;
   try{
     const el=document.querySelector('.vignette-preview');
-    const canvas=await html2canvas(el,{scale:400/el.offsetWidth*2,useCORS:true,allowTaint:true});
+    const sc=400/el.offsetWidth;
+    const raw=await html2canvas(el,{scale:sc*2,useCORS:true,allowTaint:true});
+    const canvas=document.createElement('canvas');
+    canvas.width=800;canvas.height=450;
+    canvas.getContext('2d').drawImage(raw,0,0,800,450);
     const src=canvas.toDataURL('image/png');
     document.getElementById('png-img').src=src;
     document.getElementById('png-result').style.display='block';
