@@ -451,9 +451,12 @@ function resetForm(){document.getElementById('png-result').style.display='none';
 
 function fitTitle(){
   const el=document.getElementById('prev-title');
+  const wrap=document.querySelector('.preview-wrap');
+  const scale=wrap?wrap.offsetWidth/400:1;
+  const base=42*scale;
   el.style.overflow='visible';
   el.style.height=el.clientHeight+'px';
-  let size=42;
+  let size=base;
   el.style.fontSize=size+'px';
   while(el.scrollHeight>el.offsetHeight&&size>8){
     size-=1;
@@ -462,10 +465,13 @@ function fitTitle(){
   el.style.overflow='hidden';
   el.style.height='';
 }
+function scalePreview(){const wrap=document.querySelector(".preview-wrap");const el=document.querySelector(".vignette-preview");if(!wrap||!el)return;const scale=wrap.offsetWidth/400;const title=document.getElementById("prev-title");const cat=document.getElementById("prev-cat");if(title)title.style.fontSize=(42*scale)+"px";if(cat)cat.style.fontSize=(10*scale)+"px";fitTitle();}
+window.addEventListener("resize",scalePreview);
+document.querySelector(".app").addEventListener("transitionend",scalePreview);
 function toggleSidebar(){
   const app=document.querySelector('.app');
   const btn=document.querySelector('.sidebar-toggle');
-  app.classList.toggle('collapsed');
+  app.classList.toggle('collapsed');setTimeout(scalePreview,250);
   btn.textContent=app.classList.contains('collapsed')?'›':'‹';
 }
 function chips(id,sk,sik,cls){
