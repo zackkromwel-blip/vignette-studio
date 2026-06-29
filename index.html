@@ -432,14 +432,21 @@ function resetForm(){document.getElementById('png-result').style.display='none';
 
 function fitTitle(){
   const el=document.getElementById('prev-title');
-  el.style.overflow='visible';
+  const clone=el.cloneNode(true);
+  clone.style.position='absolute';
+  clone.style.visibility='hidden';
+  clone.style.overflow='visible';
+  clone.style.height='auto';
+  clone.style.width=el.clientWidth+'px';
+  document.body.appendChild(clone);
   let size=42;
-  el.style.fontSize=size+'px';
-  while((el.scrollHeight>el.clientHeight||el.scrollWidth>el.clientWidth)&&size>10){
+  clone.style.fontSize=size+'px';
+  while(clone.scrollHeight>el.clientHeight&&size>8){
     size-=0.5;
-    el.style.fontSize=size+'px';
+    clone.style.fontSize=size+'px';
   }
-  el.style.overflow='hidden';
+  document.body.removeChild(clone);
+  el.style.fontSize=size+'px';
 }
 function chips(id,sk,sik,cls){
   document.getElementById(id).addEventListener('click',e=>{
