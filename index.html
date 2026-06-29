@@ -432,12 +432,14 @@ function resetForm(){document.getElementById('png-result').style.display='none';
 
 function fitTitle(){
   const el=document.getElementById('prev-title');
+  el.style.overflow='visible';
   let size=42;
   el.style.fontSize=size+'px';
   while((el.scrollHeight>el.clientHeight||el.scrollWidth>el.clientWidth)&&size>10){
     size-=0.5;
     el.style.fontSize=size+'px';
   }
+  el.style.overflow='hidden';
 }
 function chips(id,sk,sik,cls){
   document.getElementById(id).addEventListener('click',e=>{
