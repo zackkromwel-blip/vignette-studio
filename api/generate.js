@@ -35,7 +35,8 @@ Exemples: INTRO OKR, AGILE BASICS, LEAN THINKING, IMPACT IA, MANAGEMENT VISUEL`,
       const titre = (d.content?.[0]?.text || 'FORMATION').trim().toUpperCase();
       return res.json({ titre });
     } catch(e) {
-      return res.json({ titre: 'FORMATION' });
+      console.error('TITLE ERROR:', e.message, e);
+      return res.json({ titre: 'FORMATION', error: e.message });
     }
   }
 
