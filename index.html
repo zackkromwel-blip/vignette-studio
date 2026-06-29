@@ -434,7 +434,7 @@ function fitTitle(){
   const clone=el.cloneNode(true);
   clone.style.position='absolute';
   clone.style.visibility='hidden';
-  clone.style.overflow='visible';
+  clone.style.overflow='visible';clone.style.hyphens='auto';clone.style.webkitHyphens='auto';
   clone.style.height='auto';
   clone.style.width=el.clientWidth+'px';
   document.body.appendChild(clone);
