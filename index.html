@@ -445,12 +445,15 @@ function resetForm(){document.getElementById('png-result').style.display='none';
 
 function fitTitle(){
   const el=document.getElementById('prev-title');
+  const wrap=document.querySelector('.preview-wrap');
+  const scale=wrap?wrap.offsetWidth/400:1;
+  const minSize=120*scale;
   el.style.overflow='visible';
   el.style.height=el.clientHeight+'px';
-  let size=42;
+  let size=minSize;
   el.style.fontSize=size+'px';
-  while(el.scrollHeight>el.offsetHeight&&size>8){
-    size-=1;
+  while(el.scrollHeight>el.offsetHeight&&size>60*scale){
+    size-=scale;
     el.style.fontSize=size+'px';
   }
   el.style.overflow='hidden';
