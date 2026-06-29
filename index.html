@@ -396,7 +396,10 @@ document.getElementById('btn-gen').onclick=async()=>{
   document.getElementById('btn-gen').disabled=true;
   try{
     const el=document.querySelector('.vignette-preview');
-    const scale=400/el.offsetWidth;const canvas=await html2canvas(el,{scale:scale*2,useCORS:true,allowTaint:true,width:el.offsetWidth,height:el.offsetHeight});
+    const origW=el.offsetWidth;const origH=el.offsetHeight;
+    el.style.width='400px';el.style.height='225px';el.style.transform='none';
+    const canvas=await html2canvas(el,{scale:2,useCORS:true,allowTaint:true,width:400,height:225,windowWidth:400,windowHeight:225});
+    el.style.width='';el.style.height='';el.style.transform='';
     const src=canvas.toDataURL('image/png');
     document.getElementById('png-img').src=src;
     document.getElementById('png-result').style.display='block';
