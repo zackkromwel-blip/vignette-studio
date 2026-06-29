@@ -32,6 +32,7 @@ Exemples: INTRO OKR, AGILE BASICS, LEAN THINKING, IMPACT IA, MANAGEMENT VISUEL`,
         })
       });
       const d = await r.json();
+      console.log('ANTHROPIC RESPONSE:', JSON.stringify(d));
       const titre = (d.content?.[0]?.text || 'FORMATION').trim().toUpperCase();
       return res.json({ titre });
     } catch(e) {
