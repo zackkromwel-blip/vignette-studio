@@ -456,7 +456,7 @@ function fitTitle(){
   el.style.overflow='hidden';
   el.style.height='';
 }
-function scalePreview(){const wrap=document.querySelector(".preview-wrap");const el=document.querySelector(".vignette-preview");if(!wrap||!el)return;const scale=wrap.offsetWidth/400;const title=document.getElementById("prev-title");const cat=document.getElementById("prev-cat");if(title)title.style.fontSize=(80*scale)+"px";if(cat)cat.style.fontSize=(10*scale)+"px";fitTitle();}window.addEventListener("resize",scalePreview);document.querySelector(".app").addEventListener("transitionend",scalePreview);
+function scalePreview(){const wrap=document.querySelector(".preview-wrap");const el=document.querySelector(".vignette-preview");if(!wrap||!el)return;const scale=wrap.offsetWidth/400;const title=document.getElementById("prev-title");const cat=document.getElementById("prev-cat");if(title)title.style.fontSize=(120*scale)+"px";if(cat)cat.style.fontSize=(10*scale)+"px";fitTitle();}window.addEventListener("resize",scalePreview);document.querySelector(".app").addEventListener("transitionend",scalePreview);
 function toggleSidebar(){
   const app=document.querySelector('.app');
   app.classList.toggle('collapsed');
