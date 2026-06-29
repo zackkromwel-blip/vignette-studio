@@ -153,8 +153,8 @@ textarea::placeholder,input::placeholder{color:#bbb}
   <div class="panel active" id="p1">
     <div class="sec">
       <span class="lbl">Description de la formation</span>
-      <span class="sublbl">L'IA génère le titre à partir de ta description</span>
-      <textarea id="desc" rows="4" placeholder="Ex: Formation aux méthodes agiles Scrum et Kanban…"></textarea>
+      <span class="sublbl">L'IA génère le titre à partir de votre description</span>
+      <textarea id="desc" rows="4" placeholder="Ex : Formation aux méthodes agiles Scrum et Kanban…"></textarea>
       <div style="height:10px"></div>
       <button class="btn btn-dark" id="btn-gen-title">Générer le titre</button>
     </div>
@@ -166,7 +166,7 @@ textarea::placeholder,input::placeholder{color:#bbb}
           <div class="ai-res-val" id="ai-title">—</div>
           <div class="ai-res-edit" id="edit-btn">Modifier</div>
         </div>
-        <div class="manual" id="manual"><input type="text" id="manual-in" placeholder="Titre personnalisé…"/></div>
+        <div class="manual" id="manual"><input type="text" id="manual-in" placeholder="Votre titre personnalisé…"/></div>
       </div>
     </div>
     <div class="sec-gap"></div>
@@ -231,7 +231,7 @@ textarea::placeholder,input::placeholder{color:#bbb}
 <div class="main" id="main">
   <div class="main-empty" id="main-empty">
     <h2>Vignette Studio</h2>
-    <p>Décris une formation à gauche<br>et génère ta vignette en quelques secondes.</p>
+    <p>Décrivez une formation à gauche<br>et générez votre vignette en quelques secondes.</p>
   </div>
   <div class="preview-wrap" id="preview-wrap" style="display:none">
     <div class="preview-label">Aperçu</div>
@@ -299,7 +299,7 @@ function goTo(n){
 document.getElementById('desc').oninput=e=>S.desc=e.target.value;
 
 document.getElementById('btn-gen-title').onclick=async()=>{
-  if(!S.desc.trim()){alert('Décris la formation.');return}
+  if(!S.desc.trim()){alert('Décrivez la formation.');return}
   const btn=document.getElementById('btn-gen-title');
   btn.disabled=true;
   document.getElementById('load-title').classList.add('on');
@@ -330,7 +330,7 @@ document.getElementById('manual-in').oninput=e=>{
 chips('ch-cat','categorie',null,'on-g');
 
 document.getElementById('btn-next1').onclick=()=>{
-  if(!S.titre){alert('Génère un titre.');return}
+  if(!S.titre){alert('Générez un titre.');return}
   goTo(2);
 };
 
@@ -392,7 +392,7 @@ chips('ch-fourn','fournisseurName','fournisseurFile','on-d');
 chips('ch-acc','accueilName','accueilFile','on-d');
 
 document.getElementById('btn-next2').onclick=()=>{
-  if(!S.iconeFile){alert('Choisis une icône.');return}
+  if(!S.iconeFile){alert('Choisissez une icône.');return}
   goTo(3);
 };
 
