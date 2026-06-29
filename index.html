@@ -431,12 +431,16 @@ function resetForm(){document.getElementById('png-result').style.display='none';
 
 function fitTitle(){
   const el=document.getElementById('prev-title');
+  el.style.overflow='visible';
+  el.style.height=el.clientHeight+'px';
   let size=42;
   el.style.fontSize=size+'px';
-  while(el.scrollHeight>el.clientHeight&&size>8){
+  while(el.scrollHeight>el.offsetHeight&&size>8){
     size-=1;
     el.style.fontSize=size+'px';
   }
+  el.style.overflow='hidden';
+  el.style.height='';
 }
 function chips(id,sk,sik,cls){
   document.getElementById(id).addEventListener('click',e=>{
