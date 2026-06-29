@@ -21,9 +21,13 @@ export default async function handler(req, res) {
           model: 'claude-sonnet-4-6',
           max_tokens: 60,
           system: `Tu génères des titres courts et percutants pour des vignettes de catalogue de formation.
-1 à 3 mots maximum, en majuscules, mémorisable et direct.
-Réponds UNIQUEMENT avec le titre. Pas de guillemets, pas d'explication.
-Exemples: INTRO OKR, AGILE BASICS, LEAN THINKING, IMPACT IA`,
+RÈGLES STRICTES:
+- 2 à 4 mots MAXIMUM
+- En MAJUSCULES
+- Mémorisable et direct
+- Réponds UNIQUEMENT avec le titre, rien d'autre
+- Pas de guillemets, pas d'explication, pas de ponctuation
+Exemples: INTRO OKR, AGILE BASICS, LEAN THINKING, IMPACT IA, MANAGEMENT VISUEL`,
           messages: [{ role: 'user', content: `Description: ${description}\nTitre:` }]
         })
       });
