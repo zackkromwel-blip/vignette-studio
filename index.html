@@ -322,7 +322,7 @@ function buildGrid(icons, q=''){
     c.className='icard'+(S.iconeFile===ic.file?' isel':'');
     c.dataset.file=ic.file;c.dataset.name=ic.name;
     const img=document.createElement('img');
-    img.src='/icons/'+ic.file;
+    img.src='/assets/icons/'+ic.file;
     img.alt=ic.name;
     img.onerror=()=>{img.style.display='none'};
     c.appendChild(img);
