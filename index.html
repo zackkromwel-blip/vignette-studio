@@ -27,9 +27,9 @@ body{font-family:'BNPPSans',-apple-system,sans-serif;background:var(--bg);color:
 .app.collapsed{grid-template-columns:0px 1fr;}
 .sidebar{background:#f0f4f1;border-right:1px solid var(--border);display:flex;flex-direction:column;position:sticky;top:0;height:100vh;overflow:hidden;width:var(--sidebar-w);transition:width .2s ease;flex-shrink:0;min-width:0;}
 .app.collapsed .sidebar{width:0;}
-.sidebar-toggle{position:fixed;top:14px;left:270px;z-index:100;width:24px;height:24px;border-radius:6px;background:transparent;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--black);font-size:14px;transition:all .2s;}
+.sidebar-toggle{position:fixed;top:50%;transform:translateY(-50%);left:var(--sidebar-w);z-index:200;width:18px;height:48px;background:var(--white);border:1px solid var(--border);border-left:none;border-radius:0 8px 8px 0;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:11px;transition:left .2s ease;box-shadow:2px 0 8px rgba(0,0,0,.08);padding:0;
 .sidebar-toggle:hover{color:rgba(255,255,255,.8);}
-.app.collapsed .sidebar-toggle{left:16px;color:var(--black);}
+.sidebar-toggle:hover{color:var(--black);}.app.collapsed .sidebar-toggle{left:0;}
 .sidebar-header{padding:20px 16px 16px;border-bottom:1px solid rgba(0,0,0,.06);flex-shrink:0;display:flex;align-items:center;gap:10px;}
 .sidebar-header h1{font-size:13px;font-weight:400;color:var(--black);letter-spacing:.2px;font-family:'BNPPSans',sans-serif;}
 .sidebar-header p{font-size:10px;color:var(--muted);margin-top:2px;letter-spacing:.4px;}
