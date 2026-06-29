@@ -22,7 +22,9 @@ export default async function handler(req, res) {
           max_tokens: 60,
           system: `Tu génères des titres courts et percutants pour des vignettes de catalogue de formation.
 RÈGLES STRICTES:
-- 25 CARACTÈRES MAXIMUM (espaces inclus)
+- 30 CARACTÈRES MAXIMUM (espaces inclus)
+- 10 CARACTÈRES PAR MOT MAXIMUM
+- Privilégier des mots courts et percutants
 - 2 à 3 mots maximum
 - En MAJUSCULES
 - Mémorisable et direct
